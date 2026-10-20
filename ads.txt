@@ -1,0 +1,2 @@
+# No advertising provider is configured for Letter Breaker.
+# Add a real authorized seller record here before enabling advertising.

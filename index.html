@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <title>Letter Breaker — Build Words, Break Blocks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Letter Breaker home">
+        <span class="brand-icon">L<span>+</span></span>
+        <span><b>LETTER BREAKER</b><small>BUILD WORDS · BREAK BLOCKS</small></span>
+      </a>
+      <button id="newGameBtn" class="ghost-btn">↻ New Game</button>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="eyebrow"><span class="live-dot"></span> WORD PUZZLE ARCADE</p>
+        <h1>Letters fall.<br><em>Words explode.</em></h1>
+        <p class="intro-copy">Tap letters in any order to spell a real English word. Every letter block you use breaks away. No patterns. Just your vocabulary and your strategy.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div>
+        <div class="art-block ab1">W</div><div class="art-block ab2">O</div><div class="art-block ab3">R</div><div class="art-block ab4">D</div>
+        <div class="art-spark">✦</div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><span>SCORE</span><strong id="score">0</strong></div>
+      <div class="stat"><span>BEST</span><strong id="best">0</strong></div>
+      <div class="stat"><span>WORDS</span><strong id="words">0</strong></div>
+      <div class="stat"><span>BLOCKS LEFT</span><strong id="left">0</strong></div>
+    </section>
+
+    <section class="game-layout">
+      <section class="play-panel panel">
+        <div class="section-head">
+          <div><p class="eyebrow">THE LETTER FIELD</p><h2>Find a word in the chaos</h2></div>
+          <span id="statusPill" class="status-pill">YOUR TURN</span>
+        </div>
+        <div class="field-wrap">
+          <div id="field" class="field" aria-label="Letter blocks"></div>
+          <div id="emptyState" class="empty-state hidden">
+            <div class="empty-symbol">✦</div><h3>Field cleared!</h3><p>A fresh wave of letters is ready.</p>
+            <button id="refillBtn" class="primary-btn">Drop new letters</button>
+          </div>
+        </div>
+        <div class="selection-row">
+          <div><span class="mini-label">YOUR WORD</span><div id="wordPreview" class="word-preview"><span class="placeholder">Tap letters to begin…</span></div></div>
+          <button id="clearSelectionBtn" class="clear-btn" aria-label="Clear selected letters">Clear</button>
+        </div>
+        <div class="actions">
+          <button id="undoBtn" class="secondary-btn">↶ Undo</button>
+          <button id="submitBtn" class="primary-btn" disabled>Break word <span>↗</span></button>
+        </div>
+        <p id="message" class="message" aria-live="polite">Tap individual letter blocks to make a word of 2 or more letters.</p>
+      </section>
+
+      <aside class="side">
+        <section class="panel how-panel">
+          <p class="eyebrow">HOW TO PLAY</p>
+          <div class="how-step"><span>01</span><p><b>Tap any letters</b><br>Choose individual blocks in any order.</p></div>
+          <div class="how-step"><span>02</span><p><b>Make a real word</b><br>Use 2 or more letters. No fixed shapes or patterns.</p></div>
+          <div class="how-step"><span>03</span><p><b>Break & score</b><br>Submit a valid word to remove those letter blocks.</p></div>
+          <div class="how-step"><span>04</span><p><b>Keep the field alive</b><br>New random letters fall in as you clear space.</p></div>
+        </section>
+        <section class="panel scoring-panel">
+          <p class="eyebrow">WORD POWER</p>
+          <div class="score-rule"><span class="rule-icon">A</span><div><b>Letter points</b><small>Each letter has its own value</small></div></div>
+          <div class="score-rule"><span class="rule-icon purple">✦</span><div><b>Long-word bonus</b><small>5+ letters = extra points</small></div></div>
+          <div class="score-rule"><span class="rule-icon pink">↗</span><div><b>Combo bonus</b><small>Find words without mistakes</small></div></div>
+        </section>
+        <section class="daily-card">
+          <div class="daily-icon">✧</div><div><b>Every board is different</b><p>Letters spawn randomly. Start a new game for a fresh challenge.</p></div>
+        </section>
+      </aside>
+    </section>
+    <footer>Letter Breaker · An original word-building puzzle. Best score is saved on this device.</footer>
+  </main>
+
+  <div id="resultModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+    <div class="modal-card">
+      <div class="modal-glyph">✦</div><p class="eyebrow">FIELD REPORT</p><h2 id="resultTitle">Nice wordplay!</h2>
+      <p id="resultCopy">You turned letters into points.</p>
+      <div class="result-stats"><div><small>FINAL SCORE</small><b id="finalScore">0</b></div><div><small>WORDS MADE</small><b id="finalWords">0</b></div></div>
+      <button id="modalNewGame" class="primary-btn">Play again <span>→</span></button>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
